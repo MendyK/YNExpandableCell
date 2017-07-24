@@ -128,6 +128,12 @@ open class YNTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         }
     }
     
+    open func collapseLastOpenedCell() {
+        let internalIndexPath = IndexPath(row: self.expandedIndexPaths[0].row - 1, section: self.expandedIndexPaths[0].section)
+        self.didDeselectRowLogicAt(expandedIndexPath: self.expandedIndexPaths[0], indexPath: internalIndexPath)
+        self.deselectRow(at: internalIndexPath, animated: true)
+    }
+    
     //PRAGMA MARK: YNTableView Delegate
     
     /// Overide tableview reloadData
